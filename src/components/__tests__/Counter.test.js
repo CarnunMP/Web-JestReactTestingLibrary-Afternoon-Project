@@ -80,10 +80,22 @@ describe('Counter component', () => {
   });
 
   it('shows a warning once we hit the upper limit of the counter', () => {
-    // implement
+    const incButton = tools.queryByTestId('incButton');
+
+    for (let i = 0; i < 6; i++) {
+      rtl.fireEvent.click(incButton);
+    }
+
+    expect(tools.queryByText(/That's as high as/)).toBeInTheDocument();
   });
 
   it('shows a warning once we hit the lower limit of the counter', () => {
-    // implement
+    const decButton = tools.queryByTestId('decButton');
+
+    for (let i = 0; i < 6; i++) {
+      rtl.fireEvent.click(decButton);
+    }
+
+    expect(tools.queryByText(/That's as low as/)).toBeInTheDocument();
   });
 });
