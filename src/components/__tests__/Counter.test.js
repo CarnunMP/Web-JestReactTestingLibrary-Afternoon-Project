@@ -50,8 +50,13 @@ describe('Counter component', () => {
     expect(tools.queryByText(/-2/)).toBeInTheDocument();
   });
 
-  it('can reset the count clicking rest', () => {
-    // implement
+  it('can reset the count clicking reset', () => {
+    const resetButton = tools.queryByTestId("resetButton");
+
+    rtl.fireEvent.click(resetButton);
+    expect(tools.queryByTestId(/0/)).toBeInTheDocument();
+
+    // Hmm... not sure how to account for the 'the counter is already at 0' false positive w/o relying on one of the other buttons...
   });
 
   it('prevents the count from going over an upper limit', () => {
