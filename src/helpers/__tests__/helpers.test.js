@@ -56,5 +56,12 @@ describe('personMaker', () => {
   });
 
   // write more tests! <===========================================
-  
+  it("throws if name is a non-string", () => {
+    expect(helpers.personMaker(3, 4)).toThrow();
+    // Would we only need to test one exception, then?
+  });
+
+  it("throws if age is a non-number", () => {
+    expect(helpers.personMaker("peter", "4")).toThrow();
+  })
 });
