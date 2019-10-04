@@ -28,6 +28,21 @@ describe('sum', () => {
 
 describe('multiply', () => {
   // write tests! <================================================
+  it("returns null if fed no arguments", () => {
+    expect(helpers.multiply()).toBe(null);
+  });
+  it("returns null if fed a single argument", () => {
+    expect(helpers.multiply(1)).toBe(null);
+  });
+  it("mutiplies two numbers correctly", () => {
+    expect(helpers.multiply(2,-2)).toBe(-4);
+  });
+  it("throws if fed non-numbers", () => {
+    expect(helpers.multiply(1, "2")).toThrow();
+  });
+  it("can multiply three numbers", () => {
+    expect(helpers.multiply(2, 3, 4)).toBe(24);
+  });
 });
 
 describe('personMaker', () => {
@@ -41,4 +56,12 @@ describe('personMaker', () => {
   });
 
   // write more tests! <===========================================
+  it("throws if name is a non-string", () => {
+    expect(helpers.personMaker(3, 4)).toThrow();
+    // Would we only need to test one exception, then?
+  });
+
+  it("throws if age is a non-number", () => {
+    expect(helpers.personMaker("peter", "4")).toThrow();
+  })
 });
